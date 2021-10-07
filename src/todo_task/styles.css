@@ -1,0 +1,26 @@
+.todo-item {
+    color: blue;
+    padding: 8px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+    font-style: italic;
+}
+
+input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+}
+
+.deleteTodoBtn {
+    margin: 0px 10px;
+}
+
+.completed {
+    text-decoration: line-through;   
+}
+
+.notcompleted {
+    text-decoration: none;
+}

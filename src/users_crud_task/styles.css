@@ -1,0 +1,46 @@
+.user_container, .users_container {
+    margin: 10px 0px;
+    text-align: center;
+    flex-basis: 50%;
+}
+
+section.users {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.username {
+    /* font-weight: bold; */
+    font-style: italic;
+    color: dodgerblue;
+}
+
+.user_email {
+    color: rebeccapurple;
+}
+
+.active {
+    border: 2px dotted green;
+}
+
+.inactive {
+    border: 2px dotted red;
+}
+
+.user_item {
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 8px;
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}

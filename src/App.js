@@ -1,7 +1,87 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getSum } from './helpers';
+import StateFunctional from './components/state/state_functional_component';
+import StateClass from './components/state/state_class_component';
+import UseEffectHook from './components/useEffect';
+import Practice from './components/Practice';
+import CompA from './components/context/ContextExample';
+import Users from './users_crud_task/Users';
+import Todos from './todo_task/Todos';
+
+async function fetchData(url, callbackFn) {
+  const apiResponse = await fetch(url);
+  const response = await apiResponse.json();
+
+  callbackFn(response);
+}
+
+function fetchUsers() {
+  const usersUrl = 'https://jsonplaceholder.typicode.com/users';
+  fetchData(usersUrl, callbackFn);
+}
+
+function callbackFn(data) {
+  console.log('__callbackFn', data);
+}
+
+function ParentNew() {
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    console.log('___parent_mount');
+
+    return () => {
+      console.log('___parent_un_mount');
+    }
+  }, []);
+
+  const toggleState = () => setToggle(prevState => !prevState);
+
+  if (toggle)
+    return <h2 onClick={toggleState}><OnState /></h2>;
+  else
+    return <p onClick={toggleState}><OffState /></p>;
+}
+
+function OnState() {
+  useEffect(() => {
+    console.log('___OnState_mount');
+
+    return () => {
+      console.log('___OnState_un_mount');
+    }
+  });
+
+  return <span>OnState</span>
+}
+
+function OffState() {
+  useEffect(() => {
+    console.log('___OffState_mount');
+
+    return () => {
+      console.log('___OffState_un_mount');
+    }
+  });
+
+  return <span>OffState</span>
+}
 
 export default function App() {
-  return <Parent />
+
+  return <Todos />
+
+  // return <CompA />
+
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []);
+
+  // return <Practice />
+  // return <UseEffectHook />
+  // return <StateClass />
+  // return <StateFunctional />
+  // return <Parent />
 }
 
 function Parent() {
